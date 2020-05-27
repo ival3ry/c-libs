@@ -157,6 +157,24 @@ void libslist_delete_node(list_t *list, data_t data_to_delete)
     }
 }
 
+data_t libslist_get_node(list_t *list, data_t data)
+{
+    assert(list != NULL);
+
+    node_t *current_node = list->head;
+    while (current_node != NULL)
+    {
+        assert(current_node->data != NULL);
+        if (compare_callback(current_node->data, data) == 0)
+        {
+            return current_node->data;
+        }
+
+        current_node = current_node->next;
+    }
+    return NULL;
+}
+
 void libslist_print_list(list_t *list)
 {
     printf("\nList Info:\n");

@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 typedef void *data_t;
 
@@ -11,6 +12,10 @@ typedef struct list list_t;
 
 typedef void (*PRINT)(void *);
 typedef int (*DELETE)(void *);
+
+/**
+ * @return 0 on success , -1 on fail
+ */
 typedef int (*COMPARE)(void *, void *);
 
 /**
@@ -63,11 +68,16 @@ data_t libslist_pop(list_t *);
  * @brief Delete specific node
  *
  * @note Uses COMPARE callback to handle user's data
+ * @note Uses DELETE callback to deallocate the user's data
  *
  * @param list_t Pointer to a list
  * @param data_t Data to determine which node to delete
  */
 void libslist_delete_node(list_t *, data_t);
+
+/**
+ */
+data_t libslist_get_node(list_t *, data_t);
 
 /**
  * @brief Prints a list
