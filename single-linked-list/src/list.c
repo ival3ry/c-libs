@@ -186,3 +186,20 @@ void libslist_print_list(list_t *list)
         current_node = current_node->next;
     }
 }
+
+data_t libslist_top(list_t *list)
+{
+    if (!list)
+    {
+        fprintf(stderr, "[%s]: ERROR: List is empty!\n", __func__);
+        return NULL;
+    }
+
+    if (!list->head)
+    {
+        fprintf(stderr, "[%s]: ERROR: List head is NULL!\n", __func__);
+        return NULL;
+    }
+
+    return list->head->data;
+}

@@ -88,4 +88,11 @@ data_t libslist_get_node(list_t *, data_t);
  */
 void libslist_print_list(list_t *);
 
+/**
+ * @brief Get top node
+ *
+ * @return Pointer to the node
+ */
+data_t libslist_top(list_t *);
+
 #endif
